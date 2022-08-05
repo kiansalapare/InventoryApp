@@ -1,0 +1,36 @@
+ion-content{
+    ion-col{
+        text-align: center;
+        img{
+            height: 100px;
+            width: 120px;
+            }
+        ion-icon{
+            zoom: 2.8;
+            height: 10px;
+            width: 10px;
+            padding: 5px;
+            &:first-child{
+                zoom: 3.8;
+                padding: 5px;
+            }
+        }
+        h6,h5{
+                margin-top: 0;
+            }
+          
+            ion-card{
+                text-align: center;
+                width: 100px;
+                ion-label{
+                    font-size: 15px;
+                    text-align: center;
+    
+                }
+            }
+
+            
+
+        }
+
+    }

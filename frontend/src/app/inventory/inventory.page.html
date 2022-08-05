@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Inventory
+    </ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="main-menu"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>  
+  <ion-refresher slot="fixed" (ionRefresh)="refreshPage($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+   
+  <ion-list>
+    <ion-list-header>
+      <b>PRODUCT LIST</b>
+    </ion-list-header>
+    
+
+    <ion-item lines="inset" *ngFor="let prod of product">
+      <ion-label>
+        <h4>Product: {{prod.product}}</h4>
+        <p>Quantity: {{prod.quantity}}<br> Price: ₱ {{prod.price}}<br> Category: {{prod.category}}</p>
+      </ion-label>
+      <div class="item-note">
+        <ion-icon name="create" style="zoom: 1.5;" [routerLink]="['/update-product/', prod.id]"></ion-icon>
+        <ion-icon name="trash" style="zoom: 1.5;" (click)="deleteButton(prod.id)"></ion-icon>
+      </div>
+
+    </ion-item>
+  </ion-list>
+  
+</ion-content>
