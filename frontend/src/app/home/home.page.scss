@@ -1,19 +1,21 @@
 #container {
   text-align: center;
-
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   position: absolute;
   left: 0;
   right: 0;
   top: 50%;
   transform: translateY(-50%);
 }
-
+  
 #container strong {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 20px;
   line-height: 26px;
 }
 
 #container p {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 16px;
   line-height: 22px;
 
@@ -23,7 +25,16 @@
 }
 
 #container a {
+  
   text-decoration: none;
 }
+ion-title{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+ion-list{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
 
 

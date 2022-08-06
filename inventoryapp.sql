@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 05, 2022 at 05:45 AM
+-- Generation Time: Aug 06, 2022 at 01:59 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.29
 
@@ -29,6 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `inventory` (
   `id` int(11) NOT NULL,
+  `prodid` int(11) NOT NULL,
   `product` varchar(256) NOT NULL,
   `quantity` int(11) NOT NULL,
   `price` int(11) NOT NULL,
@@ -39,12 +40,10 @@ CREATE TABLE `inventory` (
 -- Dumping data for table `inventory`
 --
 
-INSERT INTO `inventory` (`id`, `product`, `quantity`, `price`, `category`) VALUES
-(9, 'Argentina', 100, 35, 'Canned Foods'),
-(10, 'Sprite', 100, 20, 'Softdrinks'),
-(11, 'Coke', 100, 20, 'Softdrinks'),
-(12, 'Pancit Canton (Kalamansi)', 50, 15, 'Noodles'),
-(13, 'Pancit Canton (Chili)', 50, 15, 'Noodles');
+INSERT INTO `inventory` (`id`, `prodid`, `product`, `quantity`, `price`, `category`) VALUES
+(41, 10001, 'Argentina Corned Beef', 100, 35, 'Canned Foods'),
+(42, 20001, 'Sprite', 50, 20, 'Softdrinks'),
+(43, 30001, 'Pancit Canton (Chili)', 40, 15, 'Noodles');
 
 --
 -- Indexes for dumped tables
@@ -64,7 +63,7 @@ ALTER TABLE `inventory`
 -- AUTO_INCREMENT for table `inventory`
 --
 ALTER TABLE `inventory`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

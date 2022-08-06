@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 import { ApiService } from '../api.service';
 
 @Component({
@@ -9,6 +10,7 @@ import { ApiService } from '../api.service';
 })
 export class UpdateProductPage implements OnInit {
   id: any;
+  prod1: any;
   prod: any;
   quanti: any;
   pri: any;
@@ -17,7 +19,8 @@ export class UpdateProductPage implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private _apiService: ApiService
+    private _apiService: ApiService,
+    private alertController: AlertController
   ) { 
     this.route.params.subscribe((param:any) => {
       this.id = param.id;
@@ -33,6 +36,7 @@ export class UpdateProductPage implements OnInit {
     this._apiService.getProduct(id).subscribe((res:any) => {
       console.log("SUCCESS", res);
       let product = res[0];
+      this.prod1 = product.prodid;
       this.prod = product.product;
       this.quanti = product.quantity;
       this.pri = product.price;
@@ -44,6 +48,7 @@ export class UpdateProductPage implements OnInit {
 
   updateInventory(){
     let data = {
+      prod1: this.prod1,
       prod: this.prod,
       quanti: this.quanti,
       pri: this.pri,
@@ -56,5 +61,15 @@ export class UpdateProductPage implements OnInit {
     },(err:any) => {
       console.log("ERROR", err);
     })
+    
+  }
+  async onupdateInventory(){
+    const alert = await this.alertController.create({
+      header: 'Success!',
+      message: 'Product has been Updated!',
+      buttons: ['Close']})
+      this.updateInventory();
+  
+    await alert.present();
   }
 }

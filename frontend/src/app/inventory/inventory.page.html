@@ -23,12 +23,14 @@
 
     <ion-item lines="inset" *ngFor="let prod of product">
       <ion-label>
-        <h4>Product: {{prod.product}}</h4>
-        <p>Quantity: {{prod.quantity}}<br> Price: ₱ {{prod.price}}<br> Category: {{prod.category}}</p>
+        <h4>Product ID: {{prod.prodid}} <br> Product: {{prod.product}}</h4>
+        <p>Quantity: {{prod.quantity}}<br> Price: ₱ {{prod.price}}.00<br> Category: {{prod.category}}</p>
       </ion-label>
       <div class="item-note">
         <ion-icon name="create" style="zoom: 1.5;" [routerLink]="['/update-product/', prod.id]"></ion-icon>
-        <ion-icon name="trash" style="zoom: 1.5;" (click)="deleteButton(prod.id)"></ion-icon>
+        <ion-icon name="trash" style="zoom: 1.5;" (click)="ondeleteButton(prod.id)"></ion-icon>
+        <p>{{ handlerMessage }}</p>
+        <p>{{ roleMessage }}</p>
       </div>
 
     </ion-item>

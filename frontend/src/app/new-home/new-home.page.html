@@ -38,10 +38,13 @@
     </ion-col>
 
     <ion-col size="6">
-      <ion-card routerLink="/login" color="medium">
+      <ion-card (click)="onlogout()" color="medium">
         <ion-icon name="log-out-outline"></ion-icon>
         <ion-label>Logout</ion-label>
+       
       </ion-card>
+      <p>{{ handlerMessage }}</p>
+      <p>{{ roleMessage }}</p>
     </ion-col>
 
   </ion-row>

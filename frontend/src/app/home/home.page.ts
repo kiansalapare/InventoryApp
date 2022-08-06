@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AlertController } from '@ionic/angular';
 import { ApiService } from '../api.service';
 
 
@@ -8,6 +9,7 @@ import { ApiService } from '../api.service';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+  prod1: any;
   prod: any;
   quanti: any;
   pri: any;
@@ -16,13 +18,14 @@ export class HomePage {
   handlerMessage = '';
   roleMessage = '';
   constructor(
-    public _apiService: ApiService) {
+    public _apiService: ApiService, private alertController: AlertController) {
       this.getInventory();
     }
 
 
   addProd(){
     let data={
+    prod1: this.prod1,
     prod: this.prod,
     quanti: this.quanti,
     pri: this.pri,
@@ -31,16 +34,27 @@ export class HomePage {
 
     this._apiService.addProd(data).subscribe((res:any) => {
       console.log("SUCCESS ===",res);
+      this.prod1 ='';
       this.prod = '';
       this.quanti = '';
       this.pri = '';
       this.cate = '';
-      alert('SUCCESS');
     },(error: any) => {
-      console.log("ERROR ===",error);
+      
       alert('ERROR');
     })
+    
   }
+  async onaddProd(){
+    const alert = await this.alertController.create({
+      header: 'Success!',
+      message: 'Added to the Inventory!',
+      buttons: ['Close']})
+      this.addProd();
+  
+    await alert.present();
+  }
+  
   
   getInventory(){
     this._apiService.getInventory().subscribe((res:any) => {
@@ -51,14 +65,6 @@ export class HomePage {
     })
   }
 
-  deleteButton(id){
-  this._apiService.deleteButton(id).subscribe((res:any) =>{
-    console.log("SUCCESS");
-    this.getInventory();
-  },(err:any) => {
-    console.log("ERROR") 
-  }) 
-}
 
 refreshPage(e){
   this.getInventory();
@@ -67,7 +73,6 @@ refreshPage(e){
     e.target.complete();
   }, 2000);
 } 
-
 
 
 }

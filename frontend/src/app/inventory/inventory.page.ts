@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AlertController } from '@ionic/angular';
 import { ApiService } from '../api.service';
 
 @Component({
@@ -7,15 +8,16 @@ import { ApiService } from '../api.service';
   styleUrls: ['./inventory.page.scss'],
 })
 export class InventoryPage implements OnInit {
- 
+    prod1: any;
     prod: any;
     quanti: any;
     pri: any;
     cate: any;
     product: any;
-    
+    handlerMessage = '';
+    roleMessage = '';
     constructor(
-      public _apiService: ApiService) {
+      public _apiService: ApiService, private alertController: AlertController) {
         this.getInventory();
       }
 
@@ -43,7 +45,37 @@ export class InventoryPage implements OnInit {
         }, 2000);
       } 
 
-  ngOnInit() {
-  }
+      async ondeleteButton(id){
+        const alert = await this.alertController.create({
+          header: 'Do you want to delete this product?',
+          buttons: [
+            {
+              text: 'Cancel',
+              role: 'cancel',
+              handler: () => {
+                console.log ('Canceled');
+              },
+            },
+            {
+              text: 'OK',
+              role: 'confirm',
+              handler: () => {
+                console.log ('Successfully Deleted');
+            
+                this.deleteButton(id);
+              },
+            },
+          ],
+        });
+    
+        await alert.present();
+  
+      }
+      ngOnInit() {
+      }
+    
+    }
+    
+    
 
-}
+ 

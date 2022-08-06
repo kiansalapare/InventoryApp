@@ -3,13 +3,14 @@ include "config.php";
 $input = file_get_contents('php://input'); 
 $data = json_decode($input, true);
 $message = array();
+$productid = $data['prod1'];
 $product = $data['prod'];
 $quantity = $data['quanti'];
 $price = $data['pri'];
 $category = $data['cate'];
 $id = $_GET['id'];
 
-$q = mysqli_query($con, "UPDATE `inventory` SET `product` = '$product', `quantity` = '$quantity', `price` = '$price', `category` = '$category'  WHERE `id` = '{$id}' LIMIT 1");
+$q = mysqli_query($con, "UPDATE `inventory` SET `prodid` = '$productid', `product` = '$product', `quantity` = '$quantity', `price` = '$price', `category` = '$category'  WHERE `id` = '{$id}' LIMIT 1");
 
 if($q){
     http_response_code(201);

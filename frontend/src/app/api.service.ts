@@ -25,6 +25,9 @@ export class ApiService {
   deleteButton(id){
     return this.http.delete('http://localhost/InventoryApp/backend/delete.php?id='+id);
   }
+  ondeleteButton(id){
+    return this.http.delete('http://localhost/InventoryApp/backend/delete.php?id='+id);
+  }
 
   getProduct(id){
     return this.http.get('http://localhost/InventoryApp/backend/getProd.php?id='+id);

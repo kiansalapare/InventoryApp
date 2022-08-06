@@ -8,7 +8,7 @@ $q = mysqli_query($con, "DELETE FROM `inventory` WHERE `id` = '{$id}' LIMIT 1");
 
 if($q){
     http_response_code(201);
-    $message['status'] = "Success";
+    $message['status'] = "Product has been deleted!";
 }else{
     http_response_code(422);
     $message['status'] = "Error";

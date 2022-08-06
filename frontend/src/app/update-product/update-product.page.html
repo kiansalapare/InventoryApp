@@ -11,8 +11,12 @@
 <ion-content>
 <ion-list lines="full">
   <ion-item>
+    <ion-label position="floating">Product ID</ion-label>
+    <ion-input [(ngModel)]="prod1"></ion-input>
+  </ion-item>
+  <ion-item>
     <ion-label position="floating">Product Name</ion-label>
-    <ion-input [(ngModel)]="prod" type="text"></ion-input>
+    <ion-input [(ngModel)]="prod" value="Disabled" disabled></ion-input>
   </ion-item>
   <ion-item>
     <ion-label position="floating">Quantity</ion-label>
@@ -20,17 +24,18 @@
   </ion-item>
   <ion-item>
     <ion-label position="floating">Price</ion-label>
-    <ion-input [(ngModel)]="pri" type="text"></ion-input>
+    <ion-input [(ngModel)]="pri" placeholder="₱"></ion-input>
   </ion-item>
   <ion-item>
     <ion-label position="floating">Category</ion-label>
-    <ion-input [(ngModel)]="cate" type="text"></ion-input>
+    <ion-input [(ngModel)]="cate" value="Disabled" disabled></ion-input>
   </ion-item>
   <ion-row>
     <ion-col>
-      <ion-button type="button" (click)="updateInventory()"
+      <ion-button type="button" (click)="onupdateInventory()"
       color="primary" shape="full" expand="block">
-    UPDATE PRODUCT</ion-button>
+    UPDATE PRODUCT</ion-button><p>{{ handlerMessage }}</p>
+    <p>{{ roleMessage }}</p>
     </ion-col>
   </ion-row>
 </ion-list>

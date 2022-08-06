@@ -33,8 +33,5 @@ export class LoginPage implements OnInit {
     this.router.navigate(['new-home']);
   }
 
-  register(){
-    this.router.navigate(['register']);
-  }
-
+  
 }
